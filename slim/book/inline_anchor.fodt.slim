@@ -1,0 +1,8 @@
+- if @target == @text
+  text:span text:style-name="P - URL"
+    =@text
+- else
+    ="#@text ("
+    text:span text:style-name="P - URL"
+      =@target
+    =")"

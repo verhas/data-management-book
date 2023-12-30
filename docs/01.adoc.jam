@@ -1,0 +1,157 @@
+== Chapter 1
+== Introduction
+
+In this chapter, we will discuss what data management is and why it is important.
+
+== What is Data Management
+
+Data management is the act of gathering, storing, processing, accessing, and disposing data in an enterprise environment.
+We, humans, practiced it for thousands of years.
+When somebody first time carved into palatable the amount of sheep, they had or owed to someone else, they did data management.
+They did not know it at the time, and they did not call with this name.
+It did not stop there.
+Data management is a fundamental part of our lives.
+When you crumple a printed invoice and throw to the bin, preferably after it has been paid, you perform data management.
+Everybody does data management, and data management is simple.
+
+Why should we care about it then?
+It is the same as with walking as an example.
+Everybody walks and walking is simple.
+However, if you want to walk a long distance, you need to prepare for it.
+It matters how you move, what you wear, and what you eat.
+It is a science.
+
+Similarly, data management is simple when it is.
+However, when you want to do it in a large enterprise, it is not simple anymore.
+You have to design the system that handles the data.
+
+The enterprise has to have a system to handle the data that can present the data for processing
+
+{%@import ../generated/images//ch01_4-coredm-values.svg.jim%}\
+image:../generated/images/ch01_4-coredm-values.svg[{%picsize%}]
+
+* when it is needed,
+
+* the way it is needed,
+
+* reliable, and
+
+* effective.
+
+The underlying gathering, storing, processing, accessing, and disposing are the means to achieve the goals.
+They are not the goals themselves.
+Data management has one single goal: to have the data at hand when it is needed.
+
+Later in this book, we will look at the data management systems always keeping in mind the goals.
+We do not manage the data l'art pour l'art.
+
+The goals are not independent.
+If we do not care about the costs, we can store everything on the fastest storage medium.
+If we do not care about reliability, we can get a very cheap solution.
+
+In practice, we usually end-up with some approach that is a compromise between the goals.
+The compromise should tune the different parameters of the data management that results the highest business value.
+After all, the bottom line is always the business value the enterprise can achieve with the proper support of the data.
+
+The appropriate data management enables the organization to operate and generate value.
+The cost of the operation including the cost of the data management should be subtracted from the value to get a net value.
+We usually optimize for the net value.
+
+In the case the organization is a business, we call this net value profit.
+In this book, we many times talk in business terms, talking about money and profit.
+It is important, however, understand that the same principles apply to any organization.
+Organizations being business or non-profit generate values and have costs measured in money or other units.
+
+Since the costs of the data management are usually expressed in money units, it is easier to estimate the net gain if the value is also expressed in money units, but it is not a requirement.
+There are values, like the value of human life, that are hard to express in money units.
+In these cases, it is harder to engineer an acceptable compromise, and it is also outside the scope of this book.
+
+In the rest of this chapter, we will look at these goals in more detail.
+
+== Data Management Goals
+
+=== Time, when it is needed
+
+The data should be available when it is needed.
+It is fairly obvious, but it is not always easy to achieve.
+Usually there is no problem with it.
+The data is there on the disk in a relational database or in the cloud.
+The access time is a mere few milliseconds.
+The problem emerges when the amount of the data is not trivial.
+
+When the storage prices drop, it may seem that we can store everything forever on a fast storage medium.
+Data formerly stored on punch card is stored on magnetic tape, surpassing the read speed of the punch cards by orders of magnitude.
+There is a short period of euforia until the amount of the data grows to the level that we face the same problem again.
+Then we realize that optical storage and disks became cheap, and we can store everything on them again.
+
+The reality is that data storage price drop solves the problem only temporarily and only for some of the data.
+There will always be data that needs careful design for the storage to ensure fast access.
+
+You have to carefully design multi-layered data storage systems to ensure that data frequently accessed is stored on fast storage media and data rarely accessed is stored on cheaper media.
+
+The speed is not the only problem that belongs to this goal.
+The data sometimes is so waste that it is not possible to query and retrieve some part of it in a reasonable manner.
+
+There was a bank robbery in Hungary in 2002 leaving three people dead.
+The investigation led to three suspects who were arrested and convicted a few months later.
+The case is so famous because eight years later, in 2010, the Hungarian Supreme Court found that the suspects were innocent.
+The real culprits were found using mobile cell data.
+
+The data was there in the archives, but it was challenging to query and retrieve it.
+There were 11 million mobile contracts in the country.
+Every mobile phone contacted the cell towers every few minutes.
+It means 1'541'760'000'000 records for the 8 years.
+Approximately 180 Peta Bytes of data meaning 180,000 physical disks in 2010.
+Most of the data were on 8mm magnetic tape, and they were not structured in a way that would allow easy querying.
+Analyzing the data meant a special IT project at the mobile operator.
+The experts had to write a special program reading the tapes, filtering most of the data and writing the selected part to a database for further analysis.
+
+Extracting the data from the archive took months.
+
+This example is about timing, but it is also about the other goal: format.
+
+=== Formatted, the way it is needed
+
+Continuing from the last example, the format of the data was not suitable for the analysis.
+It was readable, but it was not easy to query, and it had to be converted.
+
+Having the usable and processable format of the data is and was always a challenge.
+When different systems communicate with each other and send and receive data, they have to agree on the format.
+THe systems communicating are usually separated by space connected by some data line, but sometimes there is also a time separation.
+
+In the example above, the data was stored on 8mm magnetic tapes, which were still readable in 2010.
+There was no issue with the tape readers, and the physical format.
+The storage structure, the bytes on the tape, however, changed during the years.
+The program reading the data had to consider the year the tape was written and interpret the bytes accordingly.
+
+When the time separating is even larger, the problem is even more challenging.
+I recently had the idea only for a moment to get hold on the text of the Z80 assembly programming booklet that I wrote in 1986.
+The text exists in magnetic format on a compact cassette.
+It was written out as audio signals by a ZX Spectrum computer.
+The first challenge would be to read the audio signals from the tape and convert to bytes.
+To be honest, I gave up already at this point, but for the sake of the mental exercise, let's continue.
+If we have the byte streams, we will need a word-processor that can read the file.
+I created the booklet using the Tasword word-processor on the ZX Spectrum.
+I could probably run it on an emulator, but then I still can only display the text on screen.
+I would need to convert it to a format that I can use on my computer.
+
+Still, only for the sake of the mental exercise, let's assume that I have the text in a format that I can use.
+Since Tasword stored the text in a continuous stream of bytes, this should be possible.
+The text is Hungarian.
+It means it uses special characters from the time when there was no Unicode.
+
+In this case, my data management analysis concluded that the best solution is to have the text as a single, still existing printed copy on my shelf, there is no significant business value retrieving the text electronically.
+
+However, we do not need to go that far in time, which is usually the realm of archives.
+Every two systems that communicate must agree on the format.
+Usually the data travels on a network, and the format is defined by the protocol.
+The end systems convert the data suitable for the transfer to and from, even when the format on the two ends is identical.
+
+=== Reliable, the data is correct
+
+=== Effective, costs are controlled
+
+
+
+
+

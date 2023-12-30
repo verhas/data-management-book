@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/" version="1.1" xmlns:xl="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" viewBox="90 486 230 235" width="230" height="235">
+  <defs/>
+  <g id="Canvas_2" fill="none" stroke-dasharray="none" stroke="none" stroke-opacity="1" fill-opacity="1">
+    <title>Canvas 2</title>
+    <rect fill="white" x="90" y="486" width="230" height="235"/>
+    <g id="Canvas_2_Layer_1">
+      <title>Layer 1</title>
+      <g id="Graphic_125">
+        <rect x="90.6" y="486.5" width="97" height="100.2" fill="white"/>
+        <rect x="90.6" y="486.5" width="97" height="100.2" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(95.6 518.152)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="17.428" y="15">Access </tspan>
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="20.236" y="33.448">Speed</tspan>
+        </text>
+      </g>
+      <g id="Graphic_126">
+        <rect x="222.4" y="486.5" width="97" height="100.2" fill="white"/>
+        <rect x="222.4" y="486.5" width="97" height="100.2" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(227.4 527.376)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="18.012" y="15">Format</tspan>
+        </text>
+      </g>
+      <g id="Graphic_127">
+        <rect x="90.6" y="619.7" width="97" height="100.2" fill="white"/>
+        <rect x="90.6" y="619.7" width="97" height="100.2" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(95.6 660.576)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="9.284" y="15">Reliability</tspan>
+        </text>
+      </g>
+      <g id="Graphic_129">
+        <rect x="222.4" y="619.7" width="97" height="100.2" fill="white"/>
+        <rect x="222.4" y="619.7" width="97" height="100.2" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(227.4 651.352)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="12.812" y="15">Effective </tspan>
+          <tspan font-family="Helvetica Neue" font-size="16" fill="black" x="22.468" y="33.448">(Cost)</tspan>
+        </text>
+      </g>
+    </g>
+  </g>
+</svg>

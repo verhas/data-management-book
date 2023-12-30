@@ -1,0 +1,13 @@
+------------------------------------------------------------------------
+{%@comment
+use it in the .adoc.jam file as
+
+{%@import ../ch01_4-coredm-values.svg.jim%}
+
+image::../ch01_4-coredm-values.svg[{%picsize%}]
+
+NOTE: there is an empty line after the import
+%}
+------------------------------------------------------------------------
+
+{%@define picsize=width="230" height="235"%}
