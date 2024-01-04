@@ -1,0 +1,2 @@
+{%@define image($X)={%@import ../generated/images/$X.svg.jim%}\
+image::../generated/images/$X.svg[{%picsize%}]%}

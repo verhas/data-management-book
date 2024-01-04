@@ -1,3 +1,4 @@
+{%@import macros.jim%}
 == Chapter 1
 == Introduction
 
@@ -7,51 +8,61 @@ In this chapter, we will discuss what data management is and why it is important
 
 Data management is the act of gathering, storing, processing, accessing, and disposing data in an enterprise environment.
 We, humans, practiced it for thousands of years.
-When somebody first time carved into palatable the amount of sheep, they had or owed to someone else, they did data management.
+When somebody first time carved the amount of sheep they had or owed to someone else into palatable, they did data management.
 They did not know it at the time, and they did not call with this name.
 It did not stop there.
 Data management is a fundamental part of our lives.
-When you crumple a printed invoice and throw to the bin, preferably after it has been paid, you perform data management.
-Everybody does data management, and data management is simple.
-
+When you crumple a printed invoice and throw to the bin, preferably after paying, you perform data management.
+Everybody does data management, and so you can think that data management is simple.
 Why should we care about it then?
-It is the same as with walking as an example.
-Everybody walks and walking is simple.
+
+To enlighten the importance of the scientific approach, let's look at another example.
+This example is walking.
+Everybody walks and walking is simple, isn't it.
 However, if you want to walk a long distance, you need to prepare for it.
 It matters how you move, what you wear, and what you eat.
 It is a science.
 
+If you want to design a robot that walks, you have to understand the science of walking.
+If you need to create an industrial exoskeleton that helps people to walk, again, you have to understand the science of walking.
+Waling is not simple.
+
 Similarly, data management is simple when it is.
-However, when you want to do it in a large enterprise, it is not simple anymore.
+However, when you want to do it in a large enterprise, in a complex environment, it is not simple anymore.
 You have to design the system that handles the data.
 
-The enterprise has to have a system to handle the data that can present the data for processing
+The enterprise has to have a system to handle the data that can present it
 
-{%@import ../generated/images//ch01_4-coredm-values.svg.jim%}\
-image:../generated/images/ch01_4-coredm-values.svg[{%picsize%}]
+{%image ch01_4-coredm-values%}
 
-* when it is needed,
+* when it is needed, (TIME)
 
-* the way it is needed,
+* the way it is needed, (FORMAT)
 
-* reliable, and
+* reliable (RELIABILITY), and
 
-* effective.
+* effective (COST).
 
 The underlying gathering, storing, processing, accessing, and disposing are the means to achieve the goals.
 They are not the goals themselves.
-Data management has one single goal: to have the data at hand when it is needed.
+Data management has one single goal: to have the right data at hand when it is needed.
 
 Later in this book, we will look at the data management systems always keeping in mind the goals.
 We do not manage the data l'art pour l'art.
 
 The goals are not independent.
-If we do not care about the costs, we can store everything on the fastest storage medium.
+If we do not care about the costs, we can store everything on the fastest, most expensive storage medium.
 If we do not care about reliability, we can get a very cheap solution.
+We may design a system doing detailed and slow formatting if we do not care about the time.
+We may also omit consistency checks jeopardizing reliability to get the data faster.
 
-In practice, we usually end-up with some approach that is a compromise between the goals.
-The compromise should tune the different parameters of the data management that results the highest business value.
+Usually, as the diagram depicts, timely access, reliability and format many times contradict the cost factor.
+
+In practice, we usually end up with some practical approach, which is a compromise between the goals.
+It should tune the different parameters of the data management resulting in the highest business value.
 After all, the bottom line is always the business value the enterprise can achieve with the proper support of the data.
+
+{%image ch01_4-business-goal%}
 
 The appropriate data management enables the organization to operate and generate value.
 The cost of the operation including the cost of the data management should be subtracted from the value to get a net value.
@@ -67,29 +78,35 @@ There are values, like the value of human life, that are hard to express in mone
 In these cases, it is harder to engineer an acceptable compromise, and it is also outside the scope of this book.
 
 In the rest of this chapter, we will look at these goals in more detail.
+At the end of the chapter we will look at the different areas of Data Management.
 
 == Data Management Goals
 
-=== Time, when it is needed
+In this section, we will look at the four goals fo data management.
+
+=== Time: Data when it is needed
 
 The data should be available when it is needed.
-It is fairly obvious, but it is not always easy to achieve.
+It is a fairly obvious statement, but it is not always easy to achieve.
 Usually there is no problem with it.
-The data is there on the disk in a relational database or in the cloud.
+The data is on the disk in a relational database or in the cloud.
 The access time is a mere few milliseconds.
+So what is the problem?
+
 The problem emerges when the amount of the data is not trivial.
+What is trivial depends on the context and it always changes.
 
 When the storage prices drop, it may seem that we can store everything forever on a fast storage medium.
 Data formerly stored on punch card is stored on magnetic tape, surpassing the read speed of the punch cards by orders of magnitude.
-There is a short period of euforia until the amount of the data grows to the level that we face the same problem again.
+There is a short period of euphoria until the amount of the data grows to the level that we face the same problem again, on a different level.
 Then we realize that optical storage and disks became cheap, and we can store everything on them again.
 
-The reality is that data storage price drop solves the problem only temporarily and only for some of the data.
-There will always be data that needs careful design for the storage to ensure fast access.
+The reality is that data a storage price drop solves the problem only temporarily and only for some of the data.
+There will always be data needing careful design for the storage to ensure fast access.
 
 You have to carefully design multi-layered data storage systems to ensure that data frequently accessed is stored on fast storage media and data rarely accessed is stored on cheaper media.
 
-The speed is not the only problem that belongs to this goal.
+The access speed is not the only problem that belongs to this goal.
 The data sometimes is so waste that it is not possible to query and retrieve some part of it in a reasonable manner.
 
 There was a bank robbery in Hungary in 2002 leaving three people dead.
@@ -132,6 +149,7 @@ The first challenge would be to read the audio signals from the tape and convert
 To be honest, I gave up already at this point, but for the sake of the mental exercise, let's continue.
 If we have the byte streams, we will need a word-processor that can read the file.
 I created the booklet using the Tasword word-processor on the ZX Spectrum.
+(https://en.wikipedia.org/wiki/Tasword)
 I could probably run it on an emulator, but then I still can only display the text on screen.
 I would need to convert it to a format that I can use on my computer.
 

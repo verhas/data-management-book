@@ -1,0 +1,35 @@
+= Topics for the Data Management Book
+
+This document is a work document and not part of the book.
+It is used to collect ideas and to structure the book.
+
+* What is data management?
+* Why is data management important?
+* What is the difference between data management and data
+ ** governance,
+ ** science,
+ ** engineering,
+ ** architecture,
+ ** modeling,
+ ** quality,
+ ** security,
+ ** privacy,
+ ** integration,
+ ** warehousing,
+ ** analytics,
+ ** visualization,
+ ** storage,
+ ** processing,
+ ** mining,
+ ** architecture?
+
+* Master data
+* Data ownership
+* Data access control
+* Archiving
+  ** Long-term archiving (OAIS approach and standards)
+  ** Legal archiving
+* Record retention
+* Backup and Restore (including disaster recovery)
+* Temporal data
+

@@ -76,7 +76,7 @@ tasks.register("svgsize") {
                 %}
                 ------------------------------------------------------------------------
 
-                {%@define picsize=width="$width" height="$height"%}
+                {%@define picsize=width="${width}px" height="${height}px"%}
             """.trimIndent()
 
                 File("${it.path}.jim").writeText(content)
