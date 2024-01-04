@@ -4,4 +4,4 @@
 This document is a work document and not part of the book.
 It is used to collect ideas and to structure the book.
 
-image::KROKI_ADOC.svg[]
+image::TOC_MMAP.svg[]

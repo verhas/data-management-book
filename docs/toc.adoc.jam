@@ -4,7 +4,7 @@
 This document is a work document and not part of the book.
 It is used to collect ideas and to structure the book.
 
-{%kroki /KROKI_ADOC/plantuml/svg/
+{%kroki /TOC_MMAP/plantuml/svg/
 @startmindmap
 * Data Management
 ** governance
