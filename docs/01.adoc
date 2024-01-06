@@ -4,6 +4,14 @@
 
 In this chapter, we will discuss what data management is and why it is important.
 
+
+[NOTE]
+====
+* definition, short, dry
+* how is it related to data and how to management
+* data management and organization, people handling the data and the data handling tools, and the data controlling the handling tools (meta data) and the meta-data handling tools and so on recursively
+====
+
 == What is Data Management
 
 Data management is the act of gathering, storing, processing, accessing, and disposing data in an enterprise environment.
@@ -165,6 +173,113 @@ Every two systems that communicate must agree on the format.
 Usually the data travels on a network, and the format is defined by the protocol.
 The end systems convert the data suitable for the transfer to and from, even when the format on the two ends is identical.
 
+Many times we think on a high-abstraction level.
+Programmers do not and usually should not care about the physical format of the data.
+It is only important when there is some problem sourcing from the lower level to the higher ones.
+
+One real example is when the byte order is different on the different systems.
+Intel based architectures usually store integer numbers storing the lowest byte first.
+It is called little-endian.
+Motorola and IBM architectures store the highest byte first.
+It is called big-endian.
+When the two systems communicate, they have to agree on the byte order.
+
+Today we usually do not care too much about the byte order, because the underlying software layers, the frameworks handle this issue for us.
+Also, there is no significant performance benefit playing tricks relying on the byte order.
+However, it was not always the case, and when out application has to access data also handled by or sourcing from old systems, we have to be careful.
+
+An example, I came across, is a database designed in the 1970s.
+Calling it a database is a bit of a stretch today, because the meaning and usage of that word changed.
+If you know the history, the 1970s were way before SQL and relational databases.
+The database was a huge file on a mainframe computer.
+The file format was defined in a document on the byte level, binary to save every possible storage space.
+The data as well as the search-helping data, we would call those to indices was it a modern relation database were stored in the same file.
+Part of the data were numeric identifiers identifying towns of a small country.
+It was known that the number of the towns will never exceed 65'536.
+The designers of the database decided to store the identifiers in two bytes.
+They also assigned the lower numbers to towns with higher population and to those that had local presence of the company.
+In this case, the number was less than 256.
+Unfortunately, the developers, who wrote the assembly code that time relied on this fact and were fetching the second byte from the database only when the program code was handling the location of an affiliate.
+
+At that time, this was a neat trick, resulting in smaller and simpler code.
+The developers all knew this, it caused no problem understanding what the code was doing.
+
+Moving this code to a modern system, however, was a challenge.
+The code was rewritten in C using  automatic transition tools, and the target system was little-endian.
+It means that the byte order of the two-byte identifiers was reversed.
+When the converted code was reading the identifiers, it was always zero.
+During the migration project, for a while, it was a mystery why all affiliates were moved to the capital, identified by the number zero.
+
+Data management has to support the proper formatting of the data.
+It is usually about the logical format, but sometimes it is also the physical format.
+When designing a system, we do not need to care about the physical format, but we have to be aware of it.
+And this, also leads to the next goal: reliability.
+
 === Reliable, the data is correct
 
+The data has to be correct, or else there is not much use of it.
+There are three types of errors in the data.
+
+* The data is corrupted during the transfer.
+* The data is corrupted during processing.
+* The data comes erroneous from the source.
+
+Data management addresses these issues with different tools and methods.
+There is no single solution for all of them, and also there is no solution that would guarantee 100% data correctness.
+
+Data corruption during the transfer is usually addressed by technical solutions.
+The underlying protocol can and should provide the means to detect and possibly correct data errors.
+These technical solutions are usually transparent to the applications, and we treat them as foolproof solutions.
+It is important to understand that there is no such thing as 100% data correctness.
+In the case of transfer errors, however, the preventive measures can be very effective with reasonable costs.
+When we have 99.999...99% data correctness, where the number of the digits following the decimal point is large enough, we can consider it as 100% correctness.
+
+Data corruption during the processing can also be a technical issue, the human factor in this case is more important.
+Although it is possible that the data processing corrupts the data, the probability of such an event is close to zero.
+There are very few examples where such data corruption was suspected.
+The most well-known example is the Phobos-Grunt Spacecraft case.
+
+The Russian space mission Phobos-Grunt, which was intended to visit Mars' moon Phobos, experienced a failure that was later attributed to a bit flip.
+After launch in 2011, the spacecraft was supposed to boost itself on a course to Mars, but it never left Earth orbit.
+Investigations suggested that a single event upset (SEU), likely caused by cosmic rays, affected the onboard computer system, leading to the mission's failure.
+
+Other examples usually describe space or aviation applications.
+In each of these cases, the error is caused by a bit-flip from cosmic rays.
+In our enterprise applications, executing in data centers the probability of such an event is close to zero.
+We usually do not address these in the applications.
+
+The processing, however, can also be the source of human-induced error.
+The data can be corrupted by the application code or by human operator interaction.
+Data management has to be prepared to detect these errors, and it has to provide the means to correct them.
+
+This issue is similar to the last case, when the data is erroneous at the source.
+The realm of data management is finite and has borders.
+The data coming from the outside has to be treated with care and has to be validated.
+Validation and corrections are done at the entry points of the system.
+
+A simple and frequent example is the spelling of names.
+The data entry operator may make a typo spelling the name.
+They may spell the name the usual way while the specific person spells it differently.
+It may be misheard and replaced by a different name.
+
+The means to address these issues is technical and human.
+The data has to be checked against a list of valid names, checking usual misspellings.
+This will not identify the error, but such an approach may filter the names that are most likely erroneous.
+Data may be entered for the same information at different points of the system and these can be checked for consistency.
+
+No matter how many times you check the names, there will always be some errors remaining.
+Most of the errors can be corrected cheap and the more correctness we want to reach, the more expensive it gets.
+It is the well-known diminishing return phenomenon.
+There is a point where the extra check of the data results in so small correction that it is not worth the effort.
+
+And this leads to the last goal: cost.
+
+
 === Effective, costs are controlled
+
+Data management systems are not free.
+Every bit stored for a second costs money, as well as every bit-flip.
+The cost is usually expressed in money terms, but these days it is also expressed in energy consumption.
+
+
+== Environments of Data Management
